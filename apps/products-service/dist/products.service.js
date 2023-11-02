@@ -21,13 +21,15 @@ let ProductsService = class ProductsService {
         this.productModel = productModel;
         this.products = [];
     }
-    async insertProduct(title, description, price) {
+    async insertProduct(title, description, price, size, color, origin) {
         try {
             const prodId = Math.random().toString();
-            const newProduct = new this.productModel({ title, description, price, });
+            const newProduct = new this.productModel({ title, description, price, size, color, origin });
             const result = await newProduct.save();
             console.log(result);
-            return result.id;
+            return {
+                message: `Product created!`
+            };
         }
         catch (error) {
             throw new common_1.BadRequestException(error.message);
@@ -35,7 +37,15 @@ let ProductsService = class ProductsService {
     }
     async getProducts() {
         const products = await this.productModel.find().exec();
-        return products.map((prod) => ({ id: prod.id, title: prod.title, description: prod.description, price: prod.price }));
+        return products.map((prod) => ({
+            id: prod.id,
+            title: prod.title,
+            description: prod.description,
+            price: prod.price,
+            size: prod.size,
+            color: prod.color,
+            origin: prod.origin
+        }));
     }
     async getProduct(id) {
         const product = await this.findProduct(id);
@@ -43,7 +53,10 @@ let ProductsService = class ProductsService {
             id: product.id,
             title: product.title,
             description: product.description,
-            price: product.price
+            price: product.price,
+            size: product.size,
+            color: product.color,
+            origin: product.origin
         };
     }
     async findProduct(id) {
@@ -72,7 +85,7 @@ let ProductsService = class ProductsService {
             throw new common_1.NotFoundException(`Could not find product with id: ${id}. `);
         }
     }
-    async updateProduct(id, title, description, price) {
+    async updateProduct(id, title, description, price, size, color, origin) {
         const updatedProduct = await this.findProduct(id);
         if (title) {
             updatedProduct.title = title;
@@ -82,6 +95,15 @@ let ProductsService = class ProductsService {
         }
         if (price) {
             updatedProduct.price = price;
+        }
+        if (size) {
+            updatedProduct.size = size;
+        }
+        if (color) {
+            updatedProduct.color = color;
+        }
+        if (origin) {
+            updatedProduct.origin = origin;
         }
         updatedProduct.save();
         return {

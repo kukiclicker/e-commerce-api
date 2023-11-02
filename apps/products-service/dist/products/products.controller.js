@@ -22,8 +22,8 @@ let ProductsController = class ProductsController {
     async getAllProducts() {
         return await this.productsService.getProducts();
     }
-    insertNewProduct(title, description, price) {
-        const id = this.productsService.insertProduct(title, description, price);
+    insertNewProduct(title, description, price, size, color, origin) {
+        const id = this.productsService.insertProduct(title, description, price, size, color, origin);
         return id;
     }
     async getProduct(id) {
@@ -32,8 +32,8 @@ let ProductsController = class ProductsController {
     async deleteProduct(id) {
         return this.productsService.deleteProduct(id);
     }
-    async updateProduct(id, title, description, price) {
-        await this.productsService.updateProduct(id, title, description, price);
+    async updateProduct(id, title, description, price, size, color, origin) {
+        return await this.productsService.updateProduct(id, title, description, price, size, color, origin);
     }
 };
 exports.ProductsController = ProductsController;
@@ -48,8 +48,11 @@ __decorate([
     __param(0, (0, common_1.Body)('title')),
     __param(1, (0, common_1.Body)('description')),
     __param(2, (0, common_1.Body)('price')),
+    __param(3, (0, common_1.Body)('size')),
+    __param(4, (0, common_1.Body)('color')),
+    __param(5, (0, common_1.Body)('origin')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, Number]),
+    __metadata("design:paramtypes", [String, String, Number, String, String, String]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "insertNewProduct", null);
 __decorate([
@@ -72,8 +75,11 @@ __decorate([
     __param(1, (0, common_1.Body)('title')),
     __param(2, (0, common_1.Body)('description')),
     __param(3, (0, common_1.Body)('price')),
+    __param(4, (0, common_1.Body)('size')),
+    __param(5, (0, common_1.Body)('color')),
+    __param(6, (0, common_1.Body)('origin')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String, Number]),
+    __metadata("design:paramtypes", [String, String, String, Number, String, String, String]),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "updateProduct", null);
 exports.ProductsController = ProductsController = __decorate([

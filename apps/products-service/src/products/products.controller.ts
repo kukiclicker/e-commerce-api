@@ -16,8 +16,12 @@ export class ProductsController {
     @Body('title') title:string,
     @Body('description') description:string,
     @Body('price') price:number,
+    @Body('size') size:string,
+    @Body('color') color:string,
+    @Body('origin') origin:string,
+
   ){
-    const id = this.productsService.insertProduct(title,description,price);
+    const id = this.productsService.insertProduct(title,description,price,size,color,origin);
     return id;
   }
   @Get(":id")
@@ -33,8 +37,11 @@ export class ProductsController {
     @Param('id') id:string,
     @Body('title') title:string,
     @Body('description')description:string,
-    @Body('price')price:number){
-    await this.productsService.updateProduct(id,title,description,price);
+    @Body('price')price:number,
+    @Body('size')size:string,
+    @Body('color')color:string,
+    @Body('origin')origin:string){
+    return await this.productsService.updateProduct(id,title,description,price,size,color,origin);
   }
   
 }
