@@ -61,9 +61,9 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CategoriesService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 const mongoose_1 = __webpack_require__(/*! mongoose */ "mongoose");
 const mongoose_2 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
+const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
 let CategoriesService = class CategoriesService {
     constructor(categoryModel) {
         this.categoryModel = categoryModel;
@@ -75,6 +75,69 @@ let CategoriesService = class CategoriesService {
             name: cat.name,
             description: cat.description,
         }));
+    }
+    async createCategory(name, description) {
+        try {
+            const categoryID = Math.random().toString();
+            const newCategory = new this.categoryModel({ name, description });
+            const result = await newCategory.save();
+            console.log(result);
+            return {
+                message: `Category created!`
+            };
+        }
+        catch (error) {
+            throw new common_1.BadRequestException(error.message);
+        }
+    }
+    async getProduct(id) {
+        const category = await this.findCategory(id);
+        return {
+            id: category.id,
+            name: category.name,
+            description: category.description,
+        };
+    }
+    async findCategory(id) {
+        try {
+            const category = await this.categoryModel.findById(id).exec();
+            if (!category) {
+                throw new common_1.NotFoundException(`Could not find category with id: ${id}. `);
+            }
+            return category;
+        }
+        catch (error) {
+            throw new common_1.NotFoundException(`Could not find category with id: ${id}. `);
+        }
+    }
+    async deleteCategory(id) {
+        try {
+            const category = await this.categoryModel.findByIdAndDelete(id).exec();
+            if (!category) {
+                throw new common_1.NotFoundException(`Could not find category with id: ${id}. `);
+            }
+            return {
+                message: `Category deleted!`
+            };
+        }
+        catch (error) {
+            throw new common_1.NotFoundException(`Could not find category with id: ${id}. `);
+        }
+    }
+    async updateProduct(id, name, description) {
+        const updatedCategory = await this.findCategory(id);
+        if (name) {
+            updatedCategory.name = name;
+        }
+        if (description) {
+            updatedCategory.description = description;
+        }
+        updatedCategory.save();
+        if (name || description) {
+            return {
+                message: `Category updated!`
+            };
+        }
     }
 };
 exports.CategoriesService = CategoriesService;
@@ -103,6 +166,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CategoriesController = void 0;
@@ -115,16 +181,60 @@ let CategoriesController = class CategoriesController {
     async getCategories() {
         return await this.categoriesService.getCategories();
     }
+    insertNewProduct(name, description) {
+        const result = this.categoriesService.createCategory(name, description);
+        return result;
+    }
+    async getProduct(id) {
+        return this.categoriesService.getProduct(id);
+    }
+    async deleteCategory(id) {
+        return this.categoriesService.deleteCategory(id);
+    }
+    async updateProduct(id, name, description) {
+        return await this.categoriesService.updateProduct(id, name, description);
+    }
 };
 exports.CategoriesController = CategoriesController;
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)('fetch'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], CategoriesController.prototype, "getCategories", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)('name')),
+    __param(1, (0, common_1.Body)('description')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", void 0)
+], CategoriesController.prototype, "insertNewProduct", null);
+__decorate([
+    (0, common_1.Get)(":id"),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], CategoriesController.prototype, "getProduct", null);
+__decorate([
+    (0, common_1.Delete)('delete/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], CategoriesController.prototype, "deleteCategory", null);
+__decorate([
+    (0, common_1.Patch)('update/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)('name')),
+    __param(2, (0, common_1.Body)('description')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, String]),
+    __metadata("design:returntype", Promise)
+], CategoriesController.prototype, "updateProduct", null);
 exports.CategoriesController = CategoriesController = __decorate([
-    (0, common_1.Controller)(),
+    (0, common_1.Controller)('categories'),
     __metadata("design:paramtypes", [typeof (_a = typeof categories_service_1.CategoriesService !== "undefined" && categories_service_1.CategoriesService) === "function" ? _a : Object])
 ], CategoriesController);
 

@@ -7,7 +7,7 @@ import {Model} from 'mongoose';
 export class ProductsService {
   constructor(@InjectModel('Product') private readonly productModel:Model<Product>){
   }
-  async insertProduct(title: string, description: string, price: number, size: string, color:string, origin: string){
+  async createProduct(title: string, description: string, price: number, size: string, color:string, origin: string){
     try{
       const prodId = Math.random().toString();
       const newProduct = new this.productModel({title,description,price,size,color,origin});
@@ -73,6 +73,7 @@ export class ProductsService {
   }
   async updateProduct(id:string, title:string, description:string, price:number,size: string, color: string, origin:string){
     const updatedProduct = await this.findProduct(id);
+    let updated = false;
     if(title){
       updatedProduct.title = title;
     }
@@ -92,8 +93,10 @@ export class ProductsService {
       updatedProduct.origin = origin;
     }
     updatedProduct.save();
-    return {
-      message:`Product updated!`
+    if(title||description||price||size||color||origin){
+      return {
+        message:`Product updated!`
+      }
     }
   }
 }

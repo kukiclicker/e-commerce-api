@@ -21,8 +21,8 @@ export class ProductsController {
     @Body('origin') origin:string,
 
   ){
-    const id = this.productsService.insertProduct(title,description,price,size,color,origin);
-    return id;
+    const result = this.productsService.createProduct(title,description,price,size,color,origin);
+    return result;
   }
   @Get(":id")
   async getProduct(@Param('id') id:string){
