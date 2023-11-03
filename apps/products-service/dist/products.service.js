@@ -19,9 +19,8 @@ const mongoose_2 = require("mongoose");
 let ProductsService = class ProductsService {
     constructor(productModel) {
         this.productModel = productModel;
-        this.products = [];
     }
-    async insertProduct(title, description, price, size, color, origin) {
+    async createProduct(title, description, price, size, color, origin) {
         try {
             const prodId = Math.random().toString();
             const newProduct = new this.productModel({ title, description, price, size, color, origin });
@@ -87,6 +86,7 @@ let ProductsService = class ProductsService {
     }
     async updateProduct(id, title, description, price, size, color, origin) {
         const updatedProduct = await this.findProduct(id);
+        let updated = false;
         if (title) {
             updatedProduct.title = title;
         }
@@ -106,9 +106,11 @@ let ProductsService = class ProductsService {
             updatedProduct.origin = origin;
         }
         updatedProduct.save();
-        return {
-            message: `Product updated!`
-        };
+        if (title || description || price || size || color || origin) {
+            return {
+                message: `Product updated!`
+            };
+        }
     }
 };
 exports.ProductsService = ProductsService;

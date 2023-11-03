@@ -23,8 +23,8 @@ let ProductsController = class ProductsController {
         return await this.productsService.getProducts();
     }
     insertNewProduct(title, description, price, size, color, origin) {
-        const id = this.productsService.insertProduct(title, description, price, size, color, origin);
-        return id;
+        const result = this.productsService.createProduct(title, description, price, size, color, origin);
+        return result;
     }
     async getProduct(id) {
         return this.productsService.getProduct(id);
