@@ -7,7 +7,7 @@ import { Product } from '../product.model';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  @Get('fetch')
+  @Get()
   async getAllProducts() {
     return await this.productsService.getProducts();
   }
@@ -28,11 +28,11 @@ export class ProductsController {
   async getProduct(@Param('id') id:string){
     return this.productsService.getProduct(id);
   }
-  @Delete('delete/:id')
+  @Delete(':id')
   async deleteProduct(@Param('id') id:string){
       return this.productsService.deleteProduct(id);
   }
-  @Patch('update/:id')
+  @Patch(':id')
   async updateProduct(
     @Param('id') id:string,
     @Body('title') title:string,
