@@ -38,11 +38,10 @@ seamless product management.
 
 ### Used technologies
 <p id="used-technologies">
-The NestJS framework forms the foundation of the system, offering a strong basis for the development of microservices and REST APIs. MongoDB Atlas, a cloud-based NoSQL database service, is seamlessly integrated with, providing businesses with a scalable and resilient database solution. RabbitMQ is utilized as the message broker for communication between microservices, ensuring efficient and reliable data exchange.
+The NestJS framework forms the foundation of the system, offering a strong basis for the development of microservices and REST APIs. MongoDB Atlas, a cloud-based NoSQL database service, is seamlessly integrated with, providing businesses with a scalable and resilient database solution.
 
 [![Nest][Nest.js]][Nest-url] [![Node][Node.js]][Node-url]
 [![MongoDB Atlas][MongoDB-Atlas]][MongoDB-url] 
-[![RabitMQ][RabbitMQ]][RabbitMQ-url]
 [![TypeScript][TypeScript.js]][TypeScript-url]
 
 </p>
@@ -132,7 +131,6 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 [MongoDB-url]:https://www.mongodb.com/atlas/database
 [Nest-url]:https://nestjs.com/
-[RabbitMQ-url]:https://www.rabbitmq.com/
 [TypeScript-url]:https://www.typescriptlang.org/
 [Node-url]:https://nodejs.org/en
 [Nest.js]:https://img.shields.io/badge/Nest.js-20232A?style=for-the-badge&logo=nestjs&logoColor=FF0000
