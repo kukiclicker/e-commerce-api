@@ -1,4 +1,4 @@
-# e-commerce-api
+# E-commerce-api
 
 <details>
   <summary>Table of Contents</summary>
@@ -36,9 +36,6 @@ seamless product management.
 </p>
 
 
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ### Used technologies
 <p id="used-technologies">
 The NestJS framework forms the foundation of the system, offering a strong basis for the development of microservices and REST APIs. MongoDB Atlas, a cloud-based NoSQL database service, is seamlessly integrated with, providing businesses with a scalable and resilient database solution. RabbitMQ is utilized as the message broker for communication between microservices, ensuring efficient and reliable data exchange.
@@ -49,7 +46,6 @@ The NestJS framework forms the foundation of the system, offering a strong basis
 [![TypeScript][TypeScript.js]][TypeScript-url]
 
 </p>
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Getting Started
 
