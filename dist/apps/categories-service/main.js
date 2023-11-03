@@ -2,10 +2,10 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./apps/categories/src/categories.module.ts":
-/*!**************************************************!*\
-  !*** ./apps/categories/src/categories.module.ts ***!
-  \**************************************************/
+/***/ "./apps/categories-service/src/categories.module.ts":
+/*!**********************************************************!*\
+  !*** ./apps/categories-service/src/categories.module.ts ***!
+  \**********************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -18,10 +18,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CategoriesModule = exports.DATABASE_URL = exports.PASSWORD = exports.USERNAME = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const categories_controller_1 = __webpack_require__(/*! ./categories/categories.controller */ "./apps/categories/src/categories/categories.controller.ts");
-const categories_service_1 = __webpack_require__(/*! ./categories.service */ "./apps/categories/src/categories.service.ts");
+const categories_controller_1 = __webpack_require__(/*! ./categories/categories.controller */ "./apps/categories-service/src/categories/categories.controller.ts");
+const categories_service_1 = __webpack_require__(/*! ./categories.service */ "./apps/categories-service/src/categories.service.ts");
 const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const category_schema_1 = __webpack_require__(/*! ./schemas/category.schema */ "./apps/categories/src/schemas/category.schema.ts");
+const category_schema_1 = __webpack_require__(/*! ./schemas/category.schema */ "./apps/categories-service/src/schemas/category.schema.ts");
 exports.USERNAME = 'umitrovic22';
 exports.PASSWORD = 'vegaspro2';
 exports.DATABASE_URL = `mongodb+srv://${exports.USERNAME}:${exports.PASSWORD}@e-commerce-db.67irktm.mongodb.net/category-service-db?retryWrites=true&w=majority`;
@@ -39,10 +39,10 @@ exports.CategoriesModule = CategoriesModule = __decorate([
 
 /***/ }),
 
-/***/ "./apps/categories/src/categories.service.ts":
-/*!***************************************************!*\
-  !*** ./apps/categories/src/categories.service.ts ***!
-  \***************************************************/
+/***/ "./apps/categories-service/src/categories.service.ts":
+/*!***********************************************************!*\
+  !*** ./apps/categories-service/src/categories.service.ts ***!
+  \***********************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -150,10 +150,10 @@ exports.CategoriesService = CategoriesService = __decorate([
 
 /***/ }),
 
-/***/ "./apps/categories/src/categories/categories.controller.ts":
-/*!*****************************************************************!*\
-  !*** ./apps/categories/src/categories/categories.controller.ts ***!
-  \*****************************************************************/
+/***/ "./apps/categories-service/src/categories/categories.controller.ts":
+/*!*************************************************************************!*\
+  !*** ./apps/categories-service/src/categories/categories.controller.ts ***!
+  \*************************************************************************/
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -173,7 +173,7 @@ var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.CategoriesController = void 0;
 const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const categories_service_1 = __webpack_require__(/*! ../categories.service */ "./apps/categories/src/categories.service.ts");
+const categories_service_1 = __webpack_require__(/*! ../categories.service */ "./apps/categories-service/src/categories.service.ts");
 let CategoriesController = class CategoriesController {
     constructor(categoriesService) {
         this.categoriesService = categoriesService;
@@ -197,7 +197,7 @@ let CategoriesController = class CategoriesController {
 };
 exports.CategoriesController = CategoriesController;
 __decorate([
-    (0, common_1.Get)('fetch'),
+    (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -218,14 +218,14 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], CategoriesController.prototype, "getProduct", null);
 __decorate([
-    (0, common_1.Delete)('delete/:id'),
+    (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], CategoriesController.prototype, "deleteCategory", null);
 __decorate([
-    (0, common_1.Patch)('update/:id'),
+    (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)('name')),
     __param(2, (0, common_1.Body)('description')),
@@ -241,10 +241,10 @@ exports.CategoriesController = CategoriesController = __decorate([
 
 /***/ }),
 
-/***/ "./apps/categories/src/schemas/category.schema.ts":
-/*!********************************************************!*\
-  !*** ./apps/categories/src/schemas/category.schema.ts ***!
-  \********************************************************/
+/***/ "./apps/categories-service/src/schemas/category.schema.ts":
+/*!****************************************************************!*\
+  !*** ./apps/categories-service/src/schemas/category.schema.ts ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -330,13 +330,13 @@ var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
 var exports = __webpack_exports__;
-/*!*************************************!*\
-  !*** ./apps/categories/src/main.ts ***!
-  \*************************************/
+/*!*********************************************!*\
+  !*** ./apps/categories-service/src/main.ts ***!
+  \*********************************************/
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
-const categories_module_1 = __webpack_require__(/*! ./categories.module */ "./apps/categories/src/categories.module.ts");
+const categories_module_1 = __webpack_require__(/*! ./categories.module */ "./apps/categories-service/src/categories.module.ts");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(categories_module_1.CategoriesModule);
     await app.listen(3000);

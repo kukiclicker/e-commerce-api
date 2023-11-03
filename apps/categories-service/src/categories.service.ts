@@ -1,7 +1,7 @@
 import {Model} from 'mongoose';
 import { Category } from './category.model';
 import { InjectModel } from '@nestjs/mongoose';
-import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, HttpCode, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
 
 @Injectable()
 export class CategoriesService {

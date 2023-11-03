@@ -105,7 +105,7 @@ new apps is possible via terminal using command below:<br>
   ```sh
   npm run start:dev <application-name>
   ```
-This function run main.ts file and logs the changes of the project automatically to console. 
+This command run main.ts file and logs the changes of the project automatically to console. 
 
 ### Mongo DB 
 <p id="mongo">

@@ -5,7 +5,7 @@ import { CategoriesService } from '../categories.service';
 export class CategoriesController {
   constructor(private readonly categoriesService: CategoriesService) {}
 
-  @Get('fetch')
+  @Get()
   async getCategories() {
     return await this.categoriesService.getCategories();
   }
@@ -21,11 +21,11 @@ export class CategoriesController {
   async getProduct(@Param('id') id:string){
     return this.categoriesService.getProduct(id);
   }
-  @Delete('delete/:id')
+  @Delete(':id')
   async deleteCategory(@Param('id') id:string){
       return this.categoriesService.deleteCategory(id);
   }
-  @Patch('update/:id')
+  @Patch(':id')
   async updateProduct(
     @Param('id') id:string,
     @Body('name') name:string,
