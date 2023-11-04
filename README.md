@@ -17,6 +17,12 @@
         <li><a href="#mongo">MongoDB</a></li>
       </ul>
     </li>
+    <li><a href="#apis">APis</a>
+      <ul>
+        <li><a href="#categories-api">Categories API</a></li>
+        <li><a href="#products-api">Products API</a></li>
+      </ul>
+    </li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
