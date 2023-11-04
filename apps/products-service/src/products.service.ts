@@ -21,6 +21,10 @@ export class ProductsService {
     }
     
   }
+  async isTitleUnique(title:string){
+    const productCount = await this.productModel.find({title:title}).count();
+    return productCount>0?false:true;
+  }
   async getProducts(){
     const products = await this.productModel.find().exec();
     return products.map((prod)=>({

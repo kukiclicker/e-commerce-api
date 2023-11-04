@@ -82,6 +82,10 @@ let ProductsService = class ProductsService {
             throw new common_1.BadRequestException(error.message);
         }
     }
+    async isTitleUnique(title) {
+        const productCount = await this.productModel.find({ title: title }).count();
+        return productCount > 0 ? false : true;
+    }
     async getProducts() {
         const products = await this.productModel.find().exec();
         return products.map((prod) => ({
@@ -202,8 +206,12 @@ let ProductsController = class ProductsController {
     async getAllProducts() {
         return await this.productsService.getProducts();
     }
-    insertNewProduct(title, description, price, size, color, origin) {
-        const result = this.productsService.createProduct(title, description, price, size, color, origin);
+    async insertNewProduct(title, description, price, size, color, origin) {
+        var uniqueTitle = await this.productsService.isTitleUnique(title);
+        if (!uniqueTitle) {
+            throw new common_1.BadRequestException('Title of product must be unique');
+        }
+        const result = await this.productsService.createProduct(title, description, price, size, color, origin);
         return result;
     }
     async getProduct(id) {
@@ -233,7 +241,7 @@ __decorate([
     __param(5, (0, common_1.Body)('origin')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String, Number, String, String, String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "insertNewProduct", null);
 __decorate([
     (0, common_1.Get)(":id"),

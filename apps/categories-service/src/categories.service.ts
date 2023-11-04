@@ -15,6 +15,10 @@ export class CategoriesService {
       description:cat.description,
     }));
   }
+  async isNameUnique(name:string){
+    const categoriesCount = await this.categoryModel.find({name:name}).count();
+    return categoriesCount>0?false:true;
+  }
   async createCategory(name: string, description: string){
     try{
       const categoryID = Math.random().toString();
@@ -29,7 +33,7 @@ export class CategoriesService {
     }
     
   }
-  async getProduct(id:string){
+  async getCategory(id:string){
     const category = await this.findCategory(id);
     return {
       id:category.id, 
@@ -62,7 +66,7 @@ export class CategoriesService {
       throw new NotFoundException(`Could not find category with id: ${id}. `)
     }
   }
-  async updateProduct(id:string, name:string, description:string){
+  async updateCategory(id:string, name:string, description:string){
     const updatedCategory = await this.findCategory(id);
     if(name){
       updatedCategory.name = name;

@@ -76,6 +76,10 @@ let CategoriesService = class CategoriesService {
             description: cat.description,
         }));
     }
+    async isNameUnique(name) {
+        const categoriesCount = await this.categoryModel.find({ name: name }).count();
+        return categoriesCount > 0 ? false : true;
+    }
     async createCategory(name, description) {
         try {
             const categoryID = Math.random().toString();
@@ -90,7 +94,7 @@ let CategoriesService = class CategoriesService {
             throw new common_1.BadRequestException(error.message);
         }
     }
-    async getProduct(id) {
+    async getCategory(id) {
         const category = await this.findCategory(id);
         return {
             id: category.id,
@@ -124,7 +128,7 @@ let CategoriesService = class CategoriesService {
             throw new common_1.NotFoundException(`Could not find category with id: ${id}. `);
         }
     }
-    async updateProduct(id, name, description) {
+    async updateCategory(id, name, description) {
         const updatedCategory = await this.findCategory(id);
         if (name) {
             updatedCategory.name = name;
@@ -181,18 +185,22 @@ let CategoriesController = class CategoriesController {
     async getCategories() {
         return await this.categoriesService.getCategories();
     }
-    insertNewProduct(name, description) {
+    async createNewCategory(name, description) {
+        var uniqueName = await this.categoriesService.isNameUnique(name);
+        if (!uniqueName) {
+            throw new common_1.BadRequestException('Title of product must be unique');
+        }
         const result = this.categoriesService.createCategory(name, description);
         return result;
     }
-    async getProduct(id) {
-        return this.categoriesService.getProduct(id);
+    async getCategory(id) {
+        return this.categoriesService.getCategory(id);
     }
     async deleteCategory(id) {
         return this.categoriesService.deleteCategory(id);
     }
     async updateProduct(id, name, description) {
-        return await this.categoriesService.updateProduct(id, name, description);
+        return await this.categoriesService.updateCategory(id, name, description);
     }
 };
 exports.CategoriesController = CategoriesController;
@@ -208,15 +216,15 @@ __decorate([
     __param(1, (0, common_1.Body)('description')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, String]),
-    __metadata("design:returntype", void 0)
-], CategoriesController.prototype, "insertNewProduct", null);
+    __metadata("design:returntype", Promise)
+], CategoriesController.prototype, "createNewCategory", null);
 __decorate([
     (0, common_1.Get)(":id"),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
-], CategoriesController.prototype, "getProduct", null);
+], CategoriesController.prototype, "getCategory", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
