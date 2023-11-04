@@ -131,7 +131,7 @@ Both category and product service provides REST API with fundamental CRUD operat
 
 ## Categories API
 
-The Categories API provides endpoints for managing product categories. The base URL for the Categories API is https://category-service-c7zkuehkh-uros-projects-1ce427ee.vercel.app/categories/
+The Categories API provides endpoints for managing product categories. The base URL for the Categories API is https://category-service-nd1zpsxnm-uros-projects-1ce427ee.vercel.app/categories
 
 ### Endpoints
 
@@ -243,7 +243,7 @@ Endpoint: /categories/{category_id}<br>
   ```
 ## Products API
 
-The Categories API provides endpoints for managing products. The base URL for the Products API is https://products-service-77u9mryf1-uros-projects-1ce427ee.vercel.app/products
+The Categories API provides endpoints for managing products. The base URL for the Products API is https://products-service-5zli1pd5m-uros-projects-1ce427ee.vercel.app/products
 
 ### Endpoints
 
@@ -359,7 +359,6 @@ Endpoint: /products/{product_id}<br>
         "message": "Product deleted!"
     }
   ```
-
 ## Contact
 
 <p id="contact">
