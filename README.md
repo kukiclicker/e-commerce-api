@@ -120,6 +120,7 @@ Microservices are deployed to vercel platform. Vercel is a cloud platform and ho
 This project incorporates the MongoDB Atlas cloud service as its chosen database solution. In order to manage database connectivity and execute CRUD (Create, Read, Update, Delete) operations on data, the project has installed the Mongoose package.
 Mongoose is a popular ODM (Object Data Modeling) library for MongoDB in the Node.js ecosystem.
 * Installing mongoose into a project:
+  
   ```sh
   npm install @nestjs/mongoose mongoose  
   ```
