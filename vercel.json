@@ -1,10 +1,9 @@
 {
     "version": 2,
+    "github": {
+        "enabled": false
+      },
     "builds":[
-        {
-            "src":"apps/categories-service/src/main.ts",
-            "use":"@vercel/node"
-        },
         {
             "src":"apps/products-service/src/main.ts",
             "use":"@vercel/node"
@@ -13,10 +12,12 @@
     "routes":[
         {
             "src":"/(.*)",
-            "dest":"src/main.ts",
+            "dest":"apps/products-service/src/main.ts",
             "methods":[
                 "GET",
-                "POST"
+                "POST",
+                "PATCH",
+                "DELETE"
             ]
         }
     ]
