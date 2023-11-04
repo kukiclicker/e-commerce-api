@@ -109,7 +109,11 @@ new apps is possible via terminal using command below:<br>
 This command run main.ts file and logs the changes of the project automatically to console. 
 
 #### Vercel 
-Microservices are deployed to vercel platform. 
+Microservices are deployed to vercel platform. Vercel is a cloud platform and hosting service that specializes in simplifying the deployment and hosting of web applications, particularly those built with modern frontend frameworks and serverless functions. 
+* Installing vercel:
+  ```sh
+  npm i -g vercel
+  ```
 
 ### Mongo DB 
 <p id="mongo">
