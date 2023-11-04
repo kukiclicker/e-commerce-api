@@ -111,7 +111,7 @@ This command run main.ts file and logs the changes of the project automatically 
 ### Mongo DB 
 <p id="mongo">
 This project incorporates the MongoDB Atlas cloud service as its chosen database solution. In order to manage database connectivity and execute CRUD (Create, Read, Update, Delete) operations on data, the project has installed the Mongoose package.
-
+Mongoose is a popular ODM (Object Data Modeling) library for MongoDB in the Node.js ecosystem.
 * Installing mongoose into a project:
   ```sh
   npm install @nestjs/mongoose mongoose  
