@@ -108,6 +108,9 @@ new apps is possible via terminal using command below:<br>
   ```
 This command run main.ts file and logs the changes of the project automatically to console. 
 
+#### Vercel 
+Microservices are deployed to vercel platform. 
+
 ### Mongo DB 
 <p id="mongo">
 This project incorporates the MongoDB Atlas cloud service as its chosen database solution. In order to manage database connectivity and execute CRUD (Create, Read, Update, Delete) operations on data, the project has installed the Mongoose package.
