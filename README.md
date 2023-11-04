@@ -241,7 +241,7 @@ Endpoint: /products<br>
     Response Status Code: 200 (OK)<br>
     
 * Response Example:
-  ```sh
+  ```json
     {
       {
         "id": "6544170609288edb54ecd1e9",
@@ -272,7 +272,7 @@ Endpoint: /products<br>
     Response Status Code: 201 (CREATED)<br>
     
 * Request Body:
-  ```sh
+  ```json
     {
         "id": "6544170609288edb54ecd1e9",
         "title": "Slim-Fit White Shirt",
@@ -298,7 +298,7 @@ Endpoint: /products/{product_id}<br>
     Response Status Code: 200 (OK)<br>
     
 * Response Example for /products/6544170609288edb54ecd1e9:
-  ```sh
+  ```json
     {
       "id": "6544170609288edb54ecd1e9",
       "title": "Slim-Fit White Shirt",
@@ -317,7 +317,7 @@ Endpoint: /products/{product_id}<br>
     Response Status Code: 200 (OK)<br>
     
 * Request Body:
-  ```sh
+  ```json
     {
        
         "title": "Slim-Fit White Shirt",
@@ -327,7 +327,7 @@ Endpoint: /products/{product_id}<br>
     }
   ```
 * Response Body:
-  ```sh
+  ```json
     {
         "message": "Product updated!"
     }
@@ -340,7 +340,7 @@ Endpoint: /products/{product_id}<br>
     Response Status Code: 200 (OK)<br>
     
 * Response Body:
-  ```sh
+  ```json
     {
         "message": "Product deleted!"
     }
