@@ -181,7 +181,6 @@ Endpoint: /categories<br>
 * Request Body:
   ```json
     {
-        "id": "65463f46fdef24a0d6ce2592",
         "name": "Sweaters",
         "description": "Warm and cozy knitwear to keep you comfortable in cold weather."
     }
@@ -219,6 +218,7 @@ Endpoint: /categories/{category_id}<br>
 * Request Body:
   ```json
     {
+        "name": "Sweaters",
         "description": "Warm and cozy knitwear to keep you comfortable in cold weather."
     }
   ```
@@ -288,7 +288,6 @@ Endpoint: /products<br>
 * Request Body:
   ```json
     {
-        "id": "6544170609288edb54ecd1e9",
         "title": "Slim-Fit White Shirt",
         "description": "A sophisticated white shirt tailored for men, suitable for formal occasions.",
         "price": 59.99,
@@ -333,11 +332,12 @@ Endpoint: /products/{product_id}<br>
 * Request Body:
   ```json
     {
-       
-        "title": "Slim-Fit White Shirt",
-        "description": "A sophisticated white shirt tailored for men, suitable for formal occasions.",
-        "price": 59.99,
-        
+      "title": "Slim-Fit White Shirt",
+      "description": "A sophisticated white shirt tailored for men, suitable for formal occasions.",
+      "price": 59.99,
+      "size": "Medium",
+      "color": "White",
+      "origin": "Italy"
     }
   ```
 * Response Body:
