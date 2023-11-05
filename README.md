@@ -131,7 +131,7 @@ Both category and product service provides REST API with fundamental CRUD operat
 
 ## Categories API
 
-The Categories API provides endpoints for managing product categories. The base URL for the Categories API is https://category-service-c7zkuehkh-uros-projects-1ce427ee.vercel.app/categories/
+The Categories API provides endpoints for managing product categories. The base URL for the Categories API is https://category-service-nd1zpsxnm-uros-projects-1ce427ee.vercel.app/categories
 
 ### Endpoints
 
@@ -181,7 +181,6 @@ Endpoint: /categories<br>
 * Request Body:
   ```json
     {
-        "id": "65463f46fdef24a0d6ce2592",
         "name": "Sweaters",
         "description": "Warm and cozy knitwear to keep you comfortable in cold weather."
     }
@@ -219,6 +218,7 @@ Endpoint: /categories/{category_id}<br>
 * Request Body:
   ```json
     {
+        "name": "Sweaters",
         "description": "Warm and cozy knitwear to keep you comfortable in cold weather."
     }
   ```
@@ -243,7 +243,7 @@ Endpoint: /categories/{category_id}<br>
   ```
 ## Products API
 
-The Categories API provides endpoints for managing products. The base URL for the Products API is https://products-service-77u9mryf1-uros-projects-1ce427ee.vercel.app/products
+The Categories API provides endpoints for managing products. The base URL for the Products API is https://products-service-5zli1pd5m-uros-projects-1ce427ee.vercel.app/products
 
 ### Endpoints
 
@@ -288,7 +288,6 @@ Endpoint: /products<br>
 * Request Body:
   ```json
     {
-        "id": "6544170609288edb54ecd1e9",
         "title": "Slim-Fit White Shirt",
         "description": "A sophisticated white shirt tailored for men, suitable for formal occasions.",
         "price": 59.99,
@@ -333,11 +332,12 @@ Endpoint: /products/{product_id}<br>
 * Request Body:
   ```json
     {
-       
-        "title": "Slim-Fit White Shirt",
-        "description": "A sophisticated white shirt tailored for men, suitable for formal occasions.",
-        "price": 59.99,
-        
+      "title": "Slim-Fit White Shirt",
+      "description": "A sophisticated white shirt tailored for men, suitable for formal occasions.",
+      "price": 59.99,
+      "size": "Medium",
+      "color": "White",
+      "origin": "Italy"
     }
   ```
 * Response Body:
@@ -359,7 +359,6 @@ Endpoint: /products/{product_id}<br>
         "message": "Product deleted!"
     }
   ```
-
 ## Contact
 
 <p id="contact">
