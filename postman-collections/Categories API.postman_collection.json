@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "05d2d41e-92fc-4bb3-8d71-7e5585dc545e",
+		"name": "Categories API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27589026"
+	},
+	"item": [
+		{
+			"name": "Get all categories",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://category-service-nd1zpsxnm-uros-projects-1ce427ee.vercel.app/categories",
+					"protocol": "https",
+					"host": [
+						"category-service-nd1zpsxnm-uros-projects-1ce427ee",
+						"vercel",
+						"app"
+					],
+					"path": [
+						"categories"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create category",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Kids\",\r\n    \"description\":\"Kids clotes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://category-service-c7zkuehkh-uros-projects-1ce427ee.vercel.app/categories"
+			},
+			"response": []
+		},
+		{
+			"name": "Get single category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://category-service-nd1zpsxnm-uros-projects-1ce427ee.vercel.app/categories/6546c116fd5268597a27838e"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete category",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://category-service-c7zkuehkh-uros-projects-1ce427ee.vercel.app/categories/6546c116fd5268597a27838e"
+			},
+			"response": []
+		},
+		{
+			"name": "Update category",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\":\"Men\",\r\n    \"description\":\"Men clotes\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://category-service-c7zkuehkh-uros-projects-1ce427ee.vercel.app/categories/65463f46fdef24a0d6ce258f"
+			},
+			"response": []
+		}
+	]
+}

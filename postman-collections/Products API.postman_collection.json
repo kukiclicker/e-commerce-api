@@ -1,0 +1,73 @@
+{
+	"info": {
+		"_postman_id": "7949ada8-22b3-485e-98e8-f4c67678a93f",
+		"name": "Products API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "27589026"
+	},
+	"item": [
+		{
+			"name": "Get all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://products-service-5zli1pd5m-uros-projects-1ce427ee.vercel.app/products"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": "https://products-service-5zli1pd5m-uros-projects-1ce427ee.vercel.app/products/654645b1fdef24a0d6dea337"
+			},
+			"response": []
+		},
+		{
+			"name": "Add new product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"title\": \"Classic Hooded Sweatshirt\",\r\n      \"description\": \"A cozy and versatile unisex hooded sweatshirt, perfect for casual wear.\",\r\n      \"price\": 39.99,\r\n      \"size\": \"Large\",\r\n      \"color\": \"Grey\",\r\n      \"origin\": \"Canada\"\r\n}\r\n    ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://products-service-5zli1pd5m-uros-projects-1ce427ee.vercel.app/products"
+			},
+			"response": []
+		},
+		{
+			"name": "Get single product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "https://products-service-5zli1pd5m-uros-projects-1ce427ee.vercel.app/products/654645b1fdef24a0d6dea334"
+			},
+			"response": []
+		},
+		{
+			"name": "Update product",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n      \"title\": \"Classic Hooded Sweatshirt\",\r\n      \"description\": \"A cozy and versatile unisex hooded sweatshirt, perfect for casual wear.\",\r\n      \"price\": 159.99,\r\n      \"size\": \"Large\",\r\n      \"color\": \"Grey\",\r\n      \"origin\": \"Canada\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "https://products-service-5zli1pd5m-uros-projects-1ce427ee.vercel.app/products/654645b1fdef24a0d6dea334"
+			},
+			"response": []
+		}
+	]
+}
